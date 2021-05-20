@@ -6,6 +6,6 @@ if __name__ == '__main__':
     
     app = QtWidgets.QApplication(sys.argv)
     view = MainView()
-    #view.setFixedSize(640, 480)    
+    view.setFixedSize(800, 640)    
     view.show()
     sys.exit(app.exec_())

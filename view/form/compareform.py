@@ -39,7 +39,7 @@ class CloneToCompareForm():
         return self.btnClone
 
     def on_click_clone(self):
-        self.loading.start()
+        #self.loading.start()
         try:
             print("ON CLICK CLONE")
             print("CREATE DIRECTORY")
@@ -76,7 +76,7 @@ class CloneToCompareForm():
             print(e.args)
             print(e)
             QtWidgets.QMessageBox.about(self.display, prop.getConfig().get("FORM_PARAMETERS", "form.msg.clone.error.title"), prop.getConfig().get("FORM_PARAMETERS", "form.msg.clone.error.detail"))
-        self.loading.stop()
+        #self.loading.stop()
 
     def btn_exit(self):
         self.btnExit.clicked.connect(lambda:self.on_click_exit())
@@ -91,7 +91,7 @@ class CloneToCompareForm():
         return self.btnCommintTag
 
     def on_click_commit_tag(self):
-        self.loading.start()
+        #self.loading.start()
         print("ON CLICK COMMIT & TAG")
         directory = self.destination.text()
         rootFolder = os.path.join(directory, prop.getOutPutFolder())
@@ -104,7 +104,7 @@ class CloneToCompareForm():
             gitCommand = GitLocalRepoUtil(projectFolder)
             gitCommand.addCommitPushCreatePushTag(self.branchComment.text(), self.tag.text())
         print("FIN COMMIT & TAG")
-        self.loading.stop()
+        #self.loading.stop()
 
     def getFormLayout(self):
         return self.formLayout
@@ -127,12 +127,9 @@ class CloneToCompareForm():
         self.tag = createLineEdit("form.line.edit.branch.tag")
         self.btnCommintTag = QtWidgets.QPushButton(prop.getConfig().get("FORM_PARAMETERS", "form.button.commit.tag"))
         self.display = display        
-        self.lblGif = QtWidgets.QLabel()
-        self.loading = QtGui.QMovie(prop.getLoadGift())
         self.chkCommit = QtWidgets.QCheckBox(prop.getConfig().get("FORM_PARAMETERS", "form.check.commit"))
         self.chkPush = QtWidgets.QCheckBox(prop.getConfig().get("FORM_PARAMETERS", "form.check.push"))
-        self.chkTag = QtWidgets.QCheckBox(prop.getConfig().get("FORM_PARAMETERS", "form.check.tag"))       
-        self.lblGif.setMovie(self.loading)
+        self.chkTag = QtWidgets.QCheckBox(prop.getConfig().get("FORM_PARAMETERS", "form.check.tag"))  
        
         self.formLayout = QtWidgets.QGridLayout()
         # FORM DEFINITION
@@ -180,5 +177,8 @@ class CloneToCompareForm():
         # ROW 14
         self.formLayout.addWidget(self.btn_commit_tag(), 14, 4, 1, 1)
         # ROW 15
-        self.formLayout.addWidget(self.lblGif, 15, 1, 1, 1)
+        #self.lblGif = QtWidgets.QLabel()
+        #self.loading = QtGui.QMovie(prop.getLoadGift())     
+        #self.lblGif.setMovie(self.loading)        
+        #self.formLayout.addWidget(self.lblGif, 15, 1, 1, 1)
         #self.loading.start()

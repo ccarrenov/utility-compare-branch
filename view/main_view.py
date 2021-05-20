@@ -1,4 +1,4 @@
-from  PyQt5 import QtWidgets
+from  PyQt5 import QtWidgets, QtGui
 from view.form.compareform import CloneToCompareForm
 from view.build.doprop import LoadProperties
 
@@ -15,3 +15,4 @@ class MainView(QtWidgets.QDialog):
         self.setLayout(formLayout)
         # changing the background color to yellow
         self.setStyleSheet(prop.getConfig().get("THEME", "window.background"))
+        self.setWindowIcon(QtGui.QIcon(prop.windowIcon))
